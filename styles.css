@@ -1,5 +1,50 @@
+/* SELECTOR UNIVERSAL: aplica a todos los elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Quita márgenes por defecto */
+    padding: 0; /* Quita relleno por defecto */
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho/alto total */
+}
+
+/* CUSTOM PROPERTIES */
+:root {                                 
+    --header-height: 100px; /* Alto del header */
+    --footer-height: 100px; /* Alto del footer */
+    --aside-width: 250px; /* Ancho del aside (barra lateral) */
+    --header-footer-width: 100%; /* Ancho de header y footer */
+    --header-background: lightcoral; /* Color de fondo del header */
+    --aside-background: lightblue; /* Color de fondo del aside */
+    --main-background: lightgreen; /* Color de fondo del main */
+    --footer-background: lightgray; /* Color de fondo del footer */
+}
+
+/* LAYOUT PRINCIPAL CON FLEXBOX */
+body {
+    display: flex; /* Activa Flexbox */
+    flex-direction: row; /* Dirección principal en fila (horizontal) */
+    height: 100vh; /* Alto igual a la altura de la ventana */
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea */
+}
+
+header {
+    height: var(--header-height); /* Alto según variable */
+    width: var(--header-footer-width); /* Ancho completo (100%) para ocupar toda la fila */
+    background-color: var(--header-background); /* Color de fondo del header */
+}
+
+aside {
+    height: calc(100vh - (var(--header-height) + var(--footer-height))); /* Alto: toda la ventana menos header y footer */
+    width: var(--aside-width); /* Ancho fijo del aside */
+    background-color: var(--aside-background); /* Color de fondo del aside */
+}
+
+main {
+    height: calc(100vh - (var(--header-height) + var(--footer-height))); /* Alto: igual que el aside, llena el espacio entre header y footer */
+    width: calc(100% - var(--aside-width)); /* Ancho: ocupa el resto del ancho disponible junto al aside */
+    background-color: var(--main-background); /* Color de fondo del main */
+}
+
+footer {
+    height: var(--footer-height); /* Alto según variable */
+    width: var(--header-footer-width); /* Ancho completo (100%) para ocupar toda la fila */
+    background-color: var(--footer-background); /* Color de fondo del footer */
 }
