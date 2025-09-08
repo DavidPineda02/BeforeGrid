@@ -10,7 +10,6 @@
     --header-height: 100px; /* Alto del header */
     --footer-height: 100px; /* Alto del footer */
     --aside-width: 250px; /* Ancho del aside (barra lateral) */
-    --header-footer-width: 100%; /* Ancho de header y footer */
     --header-background: lightcoral; /* Color de fondo del header */
     --aside-background: lightblue; /* Color de fondo del aside */
     --main-background: lightgreen; /* Color de fondo del main */
@@ -18,33 +17,46 @@
 }
 
 /* LAYOUT PRINCIPAL CON FLEXBOX */
-body {
-    display: flex; /* Activa Flexbox */
-    flex-direction: row; /* Dirección principal en fila (horizontal) */
-    height: 100vh; /* Alto igual a la altura de la ventana */
-    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea */
+body { 
+    height: 100vh; /* Altura completa de la ventana */
+    display: grid; /* Usa Grid Layout */
+    grid-template-columns: var(--aside-width) 1fr 1fr; /* Define columnas: fijo, y flexibles */
+    grid-template-rows: var(--header-height) auto var(--footer-height); /* Define filas: header y footer fijos, main flexible */
+    grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer"; /* Define áreas del grid */
 }
 
 header {
-    height: var(--header-height); /* Alto según variable */
-    width: var(--header-footer-width); /* Ancho completo (100%) para ocupar toda la fila */
-    background-color: var(--header-background); /* Color de fondo del header */
+    grid-area: header; /* Asigna el área del grid */
+    background-color: var(--header-background); /* Aplica color de fondo */
+    display: flex; /* Usa Flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
 }
 
 aside {
-    height: calc(100vh - (var(--header-height) + var(--footer-height))); /* Alto: toda la ventana menos header y footer */
-    width: var(--aside-width); /* Ancho fijo del aside */
-    background-color: var(--aside-background); /* Color de fondo del aside */
+    grid-area: sidebar; /* Asigna el área del grid */
+    background-color: var(--aside-background); /* Aplica color de fondo */
+    width: var(--aside-width); /* Ancho fijo */
+    display: flex; /* Usa Flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
 }
 
 main {
-    height: calc(100vh - (var(--header-height) + var(--footer-height))); /* Alto: igual que el aside, llena el espacio entre header y footer */
-    width: calc(100% - var(--aside-width)); /* Ancho: ocupa el resto del ancho disponible junto al aside */
-    background-color: var(--main-background); /* Color de fondo del main */
+    grid-area: main; /* Asigna el área del grid */
+    background-color: var(--main-background); /* Aplica color de fondo */
+    display: flex; /* Usa Flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
 }
 
 footer {
-    height: var(--footer-height); /* Alto según variable */
-    width: var(--header-footer-width); /* Ancho completo (100%) para ocupar toda la fila */
-    background-color: var(--footer-background); /* Color de fondo del footer */
+    grid-area: footer; /* Asigna el área del grid */
+    background-color: var(--footer-background); /* Aplica color de fondo */
+    display: flex; /* Usa Flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
 }
