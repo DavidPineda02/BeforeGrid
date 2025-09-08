@@ -3,6 +3,7 @@
     margin: 0; /* Quita márgenes por defecto */
     padding: 0; /* Quita relleno por defecto */
     box-sizing: border-box; /* Incluye padding y borde dentro del ancho/alto total */
+    font-family: Arial, Helvetica, sans-serif; /* Fuente por defecto */
 }
 
 /* CUSTOM PROPERTIES */
@@ -14,6 +15,9 @@
     --aside-background: lightblue; /* Color de fondo del aside */
     --main-background: lightgreen; /* Color de fondo del main */
     --footer-background: lightgray; /* Color de fondo del footer */
+    --size-text-nav: 15px; /* Tamaño de texto por defecto */
+    --color-text-nav: black; /* Color de texto por defecto */
+    --color-text-nav-hover: white; /* Color de texto al pasar el cursor */
 }
 
 /* LAYOUT PRINCIPAL CON FLEXBOX */
@@ -36,13 +40,92 @@ header {
     justify-content: center; /* Centra horizontalmente */
 }
 
+header img {
+    height: 50px; /* Ajusta la altura del logo */
+}
+
+header div {
+    width: 91%; /* Ancho del contenido dentro del header */
+    display: flex; /* Usa Flexbox para distribuir elementos */
+    align-items: center; /* Centra verticalmente */
+    justify-content: space-between; /* Espacio entre logo y nav */
+}
+
+header nav {
+    display: flex; /* Usa Flexbox para los enlaces */
+    gap: 250px; /* Espacio entre enlaces */
+}
+
+header nav a {
+    text-decoration: none; /* Quita subrayado */
+    color: var(--color-text-nav); /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    font-size: var(--size-text-nav); /* Tamaño de fuente */
+}
+
+header nav a:hover, header nav a:focus {
+    color: var(--color-text-nav-hover); /* Color al pasar el cursor */
+}
+
+header div button {
+    text-decoration: none; /* Quita subrayado */
+    color: var(--color-text-nav); /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    font-size: var(--size-text-nav); /* Tamaño de fuente */
+    border: 2px solid var(--color-text-nav); /* Borde del botón */
+    padding: 8px 16px; /* Relleno del botón */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave */
+    background-color: transparent; /* Fondo transparente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+header div button:hover, header div button:focus {
+    background-color: var(--color-text-nav); /* Fondo al pasar el cursor */
+    color: var(--color-text-nav-hover); /* Color del texto al pasar el cursor */
+}
+
 aside {
     grid-area: sidebar; /* Asigna el área del grid */
     background-color: var(--aside-background); /* Aplica color de fondo */
     width: var(--aside-width); /* Ancho fijo */
     display: flex; /* Usa Flexbox para centrar contenido */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    flex-direction: column; /* Alinea elementos en columna */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+aside nav {
+    flex: 1; /* Ocupa el espacio disponible */
+    width: 100%; /* Ancho completo del aside */
+    padding: 20px 0; /* Relleno superior e inferior */
+    margin-top: 20px; /* Margen superior para separar del header */
+}
+
+aside nav ul {
+    list-style: none; /* Quita viñetas */
+    padding: 0; /* Quita padding */
+    margin: 0; /* Quita margen */
+}
+
+aside nav ul li {
+    margin-bottom: 20px; /* Espaciado entre ítems */
+}
+
+aside nav ul li a {
+    display: flex; /* Para ícono + texto */
+    padding: 12px 20px; /* Relleno para área clicable */
+    text-decoration: none; /* Quita subrayado */
+    color: #000000; /* Color base */
+    transition: all 0.3s ease; /* Transición suave */
+    border-left: 3px solid transparent; /* Para efecto activo */
+    font-weight: bold; /* Texto en negrita */
+    font-size: var(--size-text-nav); /* Tamaño de fuente */
+}
+
+aside nav ul li a:hover, aside nav ul li a:focus {
+    background-color: #2b4a69;
+    color: white;
+    border-left-color: #007bff;
 }
 
 main {
