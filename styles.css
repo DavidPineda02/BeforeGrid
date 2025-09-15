@@ -11,13 +11,16 @@
     --header-height: 100px; /* Alto del header */
     --footer-height: 100px; /* Alto del footer */
     --aside-width: 250px; /* Ancho del aside (barra lateral) */
-    --header-background: lightcoral; /* Color de fondo del header */
-    --aside-background: lightblue; /* Color de fondo del aside */
-    --main-background: lightgreen; /* Color de fondo del main */
-    --footer-background: lightgray; /* Color de fondo del footer */
+    /* --header-background: lightcoral; Color de fondo del header */
+    /* --aside-background: lightblue; Color de fondo del aside */
+    /* --main-background: lightgreen; Color de fondo del main */
+    /* --footer-background: lightgray; Color de fondo del footer */
     --size-text-nav: 15px; /* Tamaño de texto por defecto */
     --color-text-nav: black; /* Color de texto por defecto */
-    --color-text-nav-hover: white; /* Color de texto al pasar el cursor */
+    --color-text-nav-hover: #2b4a69; /* Color de texto al pasar el cursor */
+    --color-text-nav-button-hover: #ffffff; /* Color de texto del boton al pasar el cursor */
+    --color-text-adside-hover-focus: #007bff; /* Color de texto al pasar el cursor y al dar click */
+    --color-borde-adside-hover-focus:  #007bff; /* Color de texto al pasar el cursor y al dar click */
 }
 
 /* LAYOUT PRINCIPAL CON FLEXBOX */
@@ -38,6 +41,7 @@ header {
     display: flex; /* Usa Flexbox para centrar contenido */
     align-items: center; /* Centra verticalmente */
     justify-content: center; /* Centra horizontalmente */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
 header img {
@@ -82,7 +86,7 @@ header div button {
 
 header div button:hover, header div button:focus {
     background-color: var(--color-text-nav); /* Fondo al pasar el cursor */
-    color: var(--color-text-nav-hover); /* Color del texto al pasar el cursor */
+    color: var(--color-text-nav-button-hover); /* Color del texto al pasar el cursor */
 }
 
 aside {
@@ -123,9 +127,9 @@ aside nav ul li a {
 }
 
 aside nav ul li a:hover, aside nav ul li a:focus {
-    background-color: #2b4a69;
+    background-color: var(--color-text-adside-hover-focus);
     color: white;
-    border-left-color: #007bff;
+    border-left-color: var(--color-borde-adside-hover-focus);
 }
 
 main {
@@ -137,9 +141,48 @@ main {
 }
 
 footer {
-    grid-area: footer; /* Asigna el área del grid */
-    background-color: var(--footer-background); /* Aplica color de fondo */
-    display: flex; /* Usa Flexbox para centrar contenido */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    grid-area: footer; /* Ubica el footer en el área del grid principal */
+    background-color: var(--footer-background); /* Fondo del footer */
+    display: flex; /* Usa Flexbox para organizar el contenido */
+    justify-content: space-between; /* Separa las columnas uniformemente */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 0 20px; /* Espaciado interno lateral */
+    height: var(--footer-height); /* Altura definida por el layout */
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1); /* Sombra superior */
+}
+
+footer div {
+    flex: 1; /* Cada columna ocupa el mismo ancho */
+    padding: 0 10px; /* Separación horizontal */
+    display: flex; /* Activa flexbox */
+    flex-direction: column; /* Acomoda los elementos en columna */
+    align-items: center; /* Alinea el contenido en el centro */
+}
+
+footer h4 {
+    margin-bottom: 4px; /* Espacio entre el título y el contenido */
+    font-size: 0.9rem; /* Tamaño del título */
+    font-weight: 600; /* Negrita */
+}
+
+footer p,
+footer a {
+    font-size: 0.8rem; /* Texto pequeño */
+    color: inherit; /* Hereda el color del footer */
+    text-decoration: none; /* Sin subrayado por defecto */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Subrayado al pasar el cursor */
+}
+
+footer ul {
+    list-style: none; /* Elimina las viñetas */
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin relleno */
+    text-align: center; /* Centra el texto dentro del ul */
+}
+
+footer li {
+    margin: 2px 0; /* Espaciado pequeño entre elementos de la lista */
 }
