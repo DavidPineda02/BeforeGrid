@@ -130,9 +130,9 @@ aside nav ul li a {
 }
 
 aside nav ul li a:hover, aside nav ul li a:focus {
-    background-color: var(--adside-color-background-hover-focus);
-    color: var(--adside-color-text-hover-focus) ;
-    border-left-color: var(--adside-color-borde-hover-focus);
+    background-color: var(--adside-color-background-hover-focus); /* Fondo al pasar el cursor */
+    color: var(--adside-color-text-hover-focus) ; /* Color del texto al pasar el cursor */
+    border-left-color: var(--adside-color-borde-hover-focus); /* Borde al pasar el cursor */
 }
 
 main {
@@ -140,12 +140,13 @@ main {
     background-color: var(--main-background); /* Aplica color de fondo */
     align-items: center; /* Centra verticalmente el contenido del grid */
     display: grid; /* Activa Grid Layout */
-    grid-template-columns: repeat(4, 1fr); /* Crea 4 columnas iguales */
-    grid-template-rows: repeat(2, 1fr); /* Crea 2 filas iguales */
+    grid-template-columns: repeat(6, 1fr); /* Crea 4 columnas iguales */
+    grid-template-rows: auto; /* Filas automáticas */
     gap: 10px; /* Espacio entre las celdas */
     padding: 10px; /* Separación interna del main */
     justify-items: center; /* Centra horizontalmente cada tarjeta */
     align-items: center; /* Centra verticalmente cada tarjeta */
+    overflow-y: auto; /* Añade scroll vertical si el contenido excede la altura */
 }
 main > div {
     width: 200px; /* Ancho de la tarjeta */
@@ -155,6 +156,7 @@ main > div {
     text-align: center; /* Centra el texto horizontalmente */
     color: #000000; /* Color del texto en negro */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de la tarjeta */
+    margin-top: 20px;
 }
 
 main > div > div {
@@ -210,8 +212,8 @@ main > div > p a {
 
 main > div > p a:hover,
 main > div > p a:focus {
-    background-color: var(--header-color-text-nav);          /* Fondo al pasar */
-    color: var(--header-color-text-nav-button-hover);        /* Texto blanco al pasar */
+    background-color: var(--header-color-text-nav); /* Fondo al pasar */
+    color: var(--header-color-text-nav-button-hover); /* Texto blanco al pasar */
 }
 
 main > div:hover > div {
