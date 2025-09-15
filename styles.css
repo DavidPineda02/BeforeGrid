@@ -15,12 +15,15 @@
     /* --aside-background: lightblue; Color de fondo del aside */
     /* --main-background: lightgreen; Color de fondo del main */
     /* --footer-background: lightgray; Color de fondo del footer */
-    --size-text-nav: 15px; /* Tamaño de texto por defecto */
-    --color-text-nav: black; /* Color de texto por defecto */
-    --color-text-nav-hover: #2b4a69; /* Color de texto al pasar el cursor */
-    --color-text-nav-button-hover: #ffffff; /* Color de texto del boton al pasar el cursor */
-    --color-text-adside-hover-focus: #007bff; /* Color de texto al pasar el cursor y al dar click */
-    --color-borde-adside-hover-focus:  #007bff; /* Color de texto al pasar el cursor y al dar click */
+    --header-size-text-nav: 15px; /* Tamaño de texto por defecto */
+    --header-color-text-nav: black; /* Color de texto por defecto */
+    --header-color-text-nav-hover: #2b4a69; /* Color de texto al pasar el cursor */
+    --header-color-text-nav-button-hover: #ffffff; /* Color de texto del boton al pasar el cursor */
+
+    --adside-size-text-nav: 15px; /* Tamaño de texto por defecto */
+    --adside-color-background-hover-focus: #f0f0f0; /* Color de texto al pasar el cursor y al dar click */
+    --adside-color-text-hover-focus: #007bff; /* Color de texto al pasar el cursor y al dar click */
+    --adside-color-borde-hover-focus:  #007bff; /* Color de texto al pasar el cursor y al dar click */
 }
 
 /* LAYOUT PRINCIPAL CON FLEXBOX */
@@ -62,21 +65,21 @@ header nav {
 
 header nav a {
     text-decoration: none; /* Quita subrayado */
-    color: var(--color-text-nav); /* Color del texto */
+    color: var(--header-color-text-nav); /* Color del texto */
     font-weight: bold; /* Texto en negrita */
     font-size: var(--size-text-nav); /* Tamaño de fuente */
 }
 
 header nav a:hover, header nav a:focus {
-    color: var(--color-text-nav-hover); /* Color al pasar el cursor */
+    color: var(--header-color-text-nav-hover); /* Color al pasar el cursor */
 }
 
 header div button {
     text-decoration: none; /* Quita subrayado */
-    color: var(--color-text-nav); /* Color del texto */
+    color: var(--header-color-text-nav); /* Color del texto */
     font-weight: bold; /* Texto en negrita */
-    font-size: var(--size-text-nav); /* Tamaño de fuente */
-    border: 2px solid var(--color-text-nav); /* Borde del botón */
+    font-size: var(--header-size-text-nav); /* Tamaño de fuente */
+    border: 2px solid var(--header-color-text-nav); /* Borde del botón */
     padding: 8px 16px; /* Relleno del botón */
     border-radius: 4px; /* Bordes redondeados */
     transition: all 0.3s ease; /* Transición suave */
@@ -85,8 +88,8 @@ header div button {
 }
 
 header div button:hover, header div button:focus {
-    background-color: var(--color-text-nav); /* Fondo al pasar el cursor */
-    color: var(--color-text-nav-button-hover); /* Color del texto al pasar el cursor */
+    background-color: var(--header-color-text-nav); /* Fondo al pasar el cursor */
+    color: var(--header-color-text-nav-button-hover); /* Color del texto al pasar el cursor */
 }
 
 aside {
@@ -123,21 +126,101 @@ aside nav ul li a {
     transition: all 0.3s ease; /* Transición suave */
     border-left: 3px solid transparent; /* Para efecto activo */
     font-weight: bold; /* Texto en negrita */
-    font-size: var(--size-text-nav); /* Tamaño de fuente */
+    font-size: var(--adside-size-text-nav); /* Tamaño de fuente */
 }
 
 aside nav ul li a:hover, aside nav ul li a:focus {
-    background-color: var(--color-text-adside-hover-focus);
-    color: white;
-    border-left-color: var(--color-borde-adside-hover-focus);
+    background-color: var(--adside-color-background-hover-focus);
+    color: var(--adside-color-text-hover-focus) ;
+    border-left-color: var(--adside-color-borde-hover-focus);
 }
 
 main {
-    grid-area: main; /* Asigna el área del grid */
+    grid-area: main; /* Asigna el área del grid al main */
     background-color: var(--main-background); /* Aplica color de fondo */
-    display: flex; /* Usa Flexbox para centrar contenido */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente el contenido del grid */
+    display: grid; /* Activa Grid Layout */
+    grid-template-columns: repeat(4, 1fr); /* Crea 4 columnas iguales */
+    grid-template-rows: repeat(2, 1fr); /* Crea 2 filas iguales */
+    gap: 10px; /* Espacio entre las celdas */
+    padding: 10px; /* Separación interna del main */
+    justify-items: center; /* Centra horizontalmente cada tarjeta */
+    align-items: center; /* Centra verticalmente cada tarjeta */
+}
+main > div {
+    width: 200px; /* Ancho de la tarjeta */
+    height: 250px; /* Alto de la tarjeta */
+    background: #ffffff; /* Fondo blanco para la tarjeta */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centra el texto horizontalmente */
+    color: #000000; /* Color del texto en negro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de la tarjeta */
+}
+
+main > div > div {
+    display: flex; /* Activa flexbox para centrar la imagen */
+    margin: 30px auto 15px auto; /* Margen superior, laterales automáticos y margen inferior */
+    width: 90px; /* Ancho del círculo de imagen */
+    height: 90px; /* Alto del círculo de imagen */
+    border: 1.5px solid #000000; /* Borde alrededor del círculo */
+    border-radius: 50%; /* Hace el contenedor redondo */
+    font-size: 11px; /* Tamaño del texto (si hubiera) */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    transition: all 0.5s; /* Transición suave en hover */
+}
+
+main > div > div img {
+    width: 100%; /* La imagen ocupa todo el ancho del círculo */
+    height: 100%; /* La imagen ocupa todo el alto del círculo */
+    border-radius: 50%; /* Bordes redondeados para que quede circular */
+}
+
+main > div > span {
+    padding: 10px; /* Espaciado alrededor del texto */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 15px; /* Tamaño del texto */
+}
+
+main > div > p {
+    opacity: 0; /* Oculta los botones por defecto */
+    transition: all 0.5s; /* Transición suave al aparecer */
+    font-size: 13px; /* Tamaño del texto en los botones */
+    margin-top: 8px; /* Espacio superior entre el texto y los botones */
+    display: flex; /* Activa flexbox para los botones */
+    flex-direction: column; /* Coloca los botones en columna */
+    align-items: center; /* Centra los botones horizontalmente */
+}
+
+main > div > p a {
+    text-decoration: none; /* Sin subrayado */
+    color: var(--header-color-text-nav); /* Mismo color de texto del header */
+    font-weight: bold; /* Negrita */
+    font-size: 14px;/* Tamaño igual al del header */
+    border: 2px solid var(--header-color-text-nav); /* Borde igual */
+    padding: 5px 10px; /* Espaciado interno del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave */
+    background-color: transparent; /* Fondo transparente */
+    cursor: pointer; /* Mano al pasar */
+    margin-top: 5px; /* Espacio superior entre botones */
+    width: 70%; /* Botón más estrecho para adaptarse a la tarjeta */
+    text-align: center; /* Centrar texto */
+}
+
+main > div > p a:hover,
+main > div > p a:focus {
+    background-color: var(--header-color-text-nav);          /* Fondo al pasar */
+    color: var(--header-color-text-nav-button-hover);        /* Texto blanco al pasar */
+}
+
+main > div:hover > div {
+    transform: scale(1.1); /* Aumenta el tamaño del círculo */
+    border: 1px solid #ffffff; /* Mantiene el borde */
+}
+
+main > div:hover > p {
+    opacity: 1; /* Hace visibles los botones */
 }
 
 footer {
